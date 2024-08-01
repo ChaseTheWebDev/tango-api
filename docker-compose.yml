@@ -1,0 +1,17 @@
+version: "2"
+services:
+  tango-api:
+    build: .
+    environment:
+      - mongodb+srv://kevinleerogers:<password>@tango.la7nu0o.mongodb.net/?retryWrites=true&w=majority&appName=Tango
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
